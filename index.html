@@ -121,7 +121,7 @@
         const uInp = document.getElementById('userInput');
         const pRow = document.getElementById('pass-row');
         const authForm = document.getElementById('authForm');
-        
+    
         uInp.addEventListener('keydown', (e) => {
             if (e.key === "Enter") {
                 e.preventDefault(); 
@@ -131,7 +131,7 @@
                 }
             }
         });
-
+    
         authForm.addEventListener('submit', (e) => {
             e.preventDefault();
             if (uInp.value === "A1B2C3" && document.getElementById('passInput').value === "A2B3C4") {
@@ -139,26 +139,28 @@
                 document.getElementById('dashboard-view').style.display = 'block';
             }
         });
-
+    
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('active');
         }
-
-        function showView(viewId) {
-            document.querySelectorAll('.content-view').forEach(v => v.classList.remove('active'));
-            document.getElementById(viewId).classList.add('active');
-            document.getElementById('view-title').innerText = viewId.toUpperCase().replace('_', ' ');
-            toggleSidebar();
-        }
-
+    
         function launchProxy() {
-          const target = document.getElementById('urlInput').value;
-          const workerURL = "https://spring-moon-2ca5.panobyte.workers.dev";
-          
-          if (!target || target.trim() === "") return;
-          
-          document.getElementById('main-frame').src = `${workerURL}/?url=${encodeURIComponent(target)}`;
+            const urlInput = document.getElementById('urlInput');
+            let target = urlInput.value.trim();
+            const workerURL = "https://spring-moon-2ca5.panobyte.workers.dev";
+            
+            if (!target) return;
+    
+            if (!target.startsWith('http')) {
+                target = 'https://' + target;
+            }
+            
+            document.getElementById('main-frame').src = `${workerURL}/?url=${encodeURIComponent(target)}`;
         }
+    
+        document.getElementById('urlInput').addEventListener('keydown', (e) => {
+            if (e.key === "Enter") launchProxy();
+        });
     </script>
 </body>
 </html>
