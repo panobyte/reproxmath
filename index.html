@@ -152,9 +152,10 @@
         }
 
         function launchProxy() {
+          const target = document.getElementById('urlInput').value;
           const workerURL = "https://spring-moon-2ca5.panobyte.workers.dev";
           
-          if (target.trim() === "") return;
+          if (!target || target.trim() === "") return;
           
           document.getElementById('main-frame').src = `${workerURL}/?url=${encodeURIComponent(target)}`;
         }
