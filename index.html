@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>MathsVatch</title>
+    <title>MathsWatch</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="site_files/site.pagespeed.1771249376.css">
@@ -131,6 +131,17 @@
                     pRow.style.display = 'block';
                     document.getElementById('passInput').focus();
                 }
+            }
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === "F7") {
+                e.preventDefault();
+
+                const frame = document.getElementById('main-frame');
+                if(frame) frame.src = "about:blank";
+
+                window.location.replace("https://vle.mathswatch.co.uk/vle/");
             }
         });
     
