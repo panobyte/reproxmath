@@ -1,1 +1,1 @@
-panobyte.github.io/reproxmath/
+https://panobyte.github.io/reproxmath/
